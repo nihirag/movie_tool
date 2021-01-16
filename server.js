@@ -3,6 +3,7 @@ const app = express();
 const dotenv = require('dotenv');
 const morgan = require('morgan');
 const path = require('path')
+const bodyParser = require('body-parser')
 
 dotenv.config({path:'config.env'})
 
@@ -11,8 +12,10 @@ const PORT = process.env.PORT || 3000;
 app.use(morgan("tiny"))
 
 app.set("view engine","ejs")
-
-
+app.use(bodyParser.urlencoded({
+    extended: true
+  }));
+  
 //load assets
 app.use('/css',express.static(path.resolve(__dirname,"assets/css")))
 app.use('/img',express.static(path.resolve(__dirname,"assets/img")))

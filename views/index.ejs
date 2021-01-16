@@ -13,5 +13,13 @@
             <button type="submit">Search</button>
         </div>
     </form>
+    <% if (locals.results) { %>
+    <div class="grid-container">
+        <% for(var i=0; i<results.length; i++) {%>
+            <%- include('include/_card',{movie:results[i]})%>
+         <% } %>
+    </div>
+
+<% } %>
 </body>
 </html>
